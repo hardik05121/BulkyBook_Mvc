@@ -1,0 +1,110 @@
+﻿@model ContactUsVM
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2"> @(Model.ContactUs.Id != 0 ? "Update" : "Create") ContactUs</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="ContactUs.Id" hidden />
+            <div class="row">
+                <div class="col-12">
+                    <div class="border p-3">
+                        @*<div asp-validation-summary="ModelOnly"></div>*@
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.FirstName" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.FirstName" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.LastName" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.LastName" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.Email" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.Email" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.Message" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.Message" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.Message" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.PhoneNumber" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.PhoneNumber" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="ContactUs.Address" class="form-control border-0 shadow" />
+                            <label asp-for="ContactUs.Address" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.Address" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-floating py-2 col-12">
+                            <select asp-for="@Model.ContactUs.CountryId" asp-items="@Model.CountryList" id="country" class="form-select border-0 shadow">
+                                <option disabled selected>--Select Country--</option>
+                            </select>
+                            <label asp-for="ContactUs.CountryId" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.CountryId" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-floating py-2 col-12">
+                            <select asp-for="@Model.ContactUs.StateId" asp-items="@Model.StateList"  id="state" class="form-select border-0 shadow">
+                                <option disabled selected>--Select State--</option>
+                            </select>
+                            <label asp-for="ContactUs.StateId" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.StateId" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <select asp-for="@Model.ContactUs.CityId" asp-items="@Model.CityList" id="city" class="form-select border-0 shadow">
+                                <option disabled selected>--Select City--</option>
+                            </select>
+                            <label asp-for="ContactUs.CityId" class="ms-2"></label>
+                            <span asp-validation-for="ContactUs.CityId" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="row pt-2">
+                            <div class="col-6 col-md-3">
+                                @if (Model.ContactUs.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Send Msg</button>
+                                }
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="ContactUs" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+   
+}
+
